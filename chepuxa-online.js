@@ -1,11 +1,11 @@
-const questions = ['Who?', 'Whith whom?', 'When?', 'Why?', 'What have they done?', 'What did the story end up with?'];
+const questions = ['When?', 'Who?', 'Whith whom?', 'How?', 'What have they done?', 'What did the story end up with?'];
 
-const otvetFactory = (who, withWhom, when, why, action, final) => {
+const otvetFactory = ( when, who, withWhom, how, action, final) => {
     return {
+        when,
         who,
         withWhom,
-        when,
-        why, 
+        how, 
         action, 
         final,
     }
@@ -13,13 +13,13 @@ const otvetFactory = (who, withWhom, when, why, action, final) => {
 
 function createArr(p){
     const arr = [];
-    arr.push(p.who, p.withWhom, p.when, p.why, p.action, p.final)
+    arr.push(p.when, p.who, p.withWhom, p.how, p.action, p.final)
     return arr;
 }
 
-let p1 = otvetFactory('Anya', 'with Jane', 'yesterday', 'for no reason', 'insulted their teacher', 'the teacher calmly asked them why had they done it.');
-let p2 = otvetFactory('Juddy', 'with Tom', 'today', 'beacause they are head over hills about each other', 'kissed at their schooll', 'kids from 2nd grade saw it');
-let p3 = otvetFactory('Tom', 'whith Jerry', 'in the 10th grade', 'because they had a lot in common', 'were working on a project together', 'everything worked out and they managed to get money out of thid project');
+let p1 = otvetFactory('Yesterday', 'Anya', 'with Jane', 'insulted their teacher', 'angrily', 'the teacher calmly asked them why had they done it.');
+let p2 = otvetFactory('Today', 'Juddy', 'with Tom', 'kissed at their schooll', 'passionately', 'kids from 2nd grade saw it...');
+let p3 = otvetFactory('When we were in the 10th grade', 'Tom', 'whith Jerry', 'were working on a project together', 'very diligently', 'everything worked out and they managed to get money out of this project!');
 
 const mix = function() {
     const arr = [0, 1, 2, 3, 4, 5];
@@ -44,11 +44,11 @@ const ultrachepuxa = (a, b, c) => {
     const a3 = createArr(c);
     for (el of arr){
         if (chepux.length<2){
-            chepux.push(a1[el] + el);
+            chepux.push(a1[el]);
         } else if (chepux.length<4){
-            chepux.push(a2[el] + el);
+            chepux.push(a2[el]);
         } else {
-            chepux.push(a3[el] + el);
+            chepux.push(a3[el]);
         }
     } 
 
@@ -63,10 +63,4 @@ const ultrachepuxa = (a, b, c) => {
     return chepux, sorted;
 }
 
-
-
-
-
-console.log(mix());
-
-console.log(ultrachepuxa(p1,p2,p3));
+console.log(ultrachepuxa(p1,p2,p3).join(' '));
