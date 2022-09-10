@@ -34,24 +34,39 @@ const mix = function() {
     return arr;
 }
 
-const chepuxa = (a, b, c) => {
+const ultrachepuxa = (a, b, c) => {
     const arr = mix();
+    const ar = [0, 1, 2, 3, 4, 5];
     const chepux = [];
+    const sorted = [];
     const a1 = createArr(a);
     const a2 = createArr(b);
     const a3 = createArr(c);
     for (el of arr){
         if (chepux.length<2){
-            chepux.push(a1[el]);
+            chepux.push(a1[el] + el);
         } else if (chepux.length<4){
-            chepux.push(a2[el]);
+            chepux.push(a2[el] + el);
         } else {
-            chepux.push(a3[el]);
+            chepux.push(a3[el] + el);
+        }
+    } 
+
+    for (i=0; i<6; i++){
+        for (j=0; j<6; j++){
+            if (ar[i]===arr[j]){
+                sorted.push(chepux[j])
+            }
         }
     }
-    return chepux;
+
+    return chepux, sorted;
 }
 
 
+
+
+
 console.log(mix());
-console.log(chepuxa(p1,p2,p3));
+
+console.log(ultrachepuxa(p1,p2,p3));
